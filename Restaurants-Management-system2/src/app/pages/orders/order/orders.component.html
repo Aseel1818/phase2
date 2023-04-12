@@ -1,0 +1,51 @@
+<div class="align-table overflow row">
+	<div class="orders">
+		<table [dataSource]="orders" mat-table>
+			<ng-container matColumnDef="OrderID">
+				<th *matHeaderCellDef mat-header-cell> Order ID</th>
+				<td *matCellDef="let order " mat-cell> {{order.id}} </td>
+			</ng-container>
+			<ng-container matColumnDef="total">
+				<th *matHeaderCellDef mat-header-cell> Total</th>
+				<td *matCellDef="let order" mat-cell> {{order.total}} </td>
+			</ng-container>
+			<ng-container matColumnDef="details">
+				<th *matHeaderCellDef mat-header-cell> Notes</th>
+				<td *matCellDef="let order" mat-cell> {{order.notes}} </td>
+			</ng-container>
+			<ng-container matColumnDef="table">
+				<th *matHeaderCellDef mat-header-cell> Table</th>
+				<td *matCellDef="let order" mat-cell> {{order.tableID}} </td>
+			</ng-container>
+			<ng-container matColumnDef="isPaid">
+				<th *matHeaderCellDef mat-header-cell></th>
+				<td *matCellDef="let order" mat-cell>
+					<button
+						class="payment-status button {{isOrderPaid(order) ? 'paid' : 'not-paid'}}">{{isOrderPaid(order)
+						? 'Paid' : 'Not paid'}}</button>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="pay">
+				<th *matHeaderCellDef mat-header-cell>
+					<mat-form-field class="paymentStatus" appearance="outline">
+						<mat-label>Status:</mat-label>
+						<mat-select [(ngModel)]="statusOptions" (selectionChange)="paidOrders($event.value)">
+							<mat-option value="all">All</mat-option>
+							<mat-option value="paid">Paid</mat-option>
+							<mat-option value="notPaid">Not Paid</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</th>
+				<td *matCellDef="let order" mat-cell>
+					<button (click)="goToPayments(order.id)" class="paymentButton button" mat-raised-button>Pay</button>
+					<button *ngIf="showSplit" (click)="goToSplitOrder(order.id)" mat-raised-button>Split</button>
+
+				</td>
+			</ng-container>
+			<tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+			<tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+		</table>
+	</div>
+	<app-orders-payment-details [id]="selectedOrderId" *ngIf="selectedOrderId"></app-orders-payment-details>
+
+</div>

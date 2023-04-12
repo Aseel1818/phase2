@@ -1,0 +1,30 @@
+.row {
+    display: flex;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.radius {
+    border-radius: 100rem;
+}
+
+body {
+    overflow-y: auto;
+}
+
+.height {
+    height: 280px;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.custom-width{
+    width: 60%;
+}

@@ -1,0 +1,43 @@
+table {
+  border-radius: 20px;
+  width: 768px;
+}
+
+.orders {
+  height: calc(100vh - 100px);
+  overflow: auto;
+}
+
+td {
+  text-align: center;
+  padding: 5px;
+  background-color: #FAFAFA;
+}
+
+th {
+  text-align: center;
+  padding: 5px;
+  background-color: #EAF0F0;
+  color: black;
+}
+
+.paymentStatus {
+  width: 150px;
+  font-size: small;
+  padding-top: 20px;
+}
+
+.payment-status {
+  font-size: medium;
+  height: 30px;
+  background-color: #cbe7f9;
+  color: black;
+}
+
+.paid {
+  background-color: #C0F181;
+}
+
+.not-paid {
+  background-color: #FF9999;
+}
